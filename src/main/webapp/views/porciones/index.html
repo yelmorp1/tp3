@@ -1,0 +1,101 @@
+<div class="container2" ng-controller='PorcionCtrl'>
+    <div class="margenPanelRigth">
+        <fieldset>
+            <legend>Control de Porciones </legend>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-user"></i> Listado de Productos</h3>
+                </div>
+                <div class="panel-body">
+                   <div class="row">
+
+                    <div class="row">
+                        <div class="col-lg-4" style="padding-left: 120px;">
+                            Seleccionar insumo: 
+                        </div>
+                        <div class="col-lg-4">
+                            <select style=" min-width: 180px;">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="opel">Opel</option>
+                                <option value="audi">Audi</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <button type="button"  style=" width:80px;"> Buscar</button>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-4" style="padding-left: 120px;"> Costo de insumo en almacén:</div>
+                        <div class="col-lg-4"> 
+                            <input type="type" name="nombre"> <span>kg</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4" style="padding-left: 120px;">  Nuevo costo de insumo:</div>
+                        <div class="col-lg-4"> 
+                            <input type="type" name="nombre"> <span>kg</span>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                            <span class="input-group-btn" style="padding-left:5px;">
+                                <a class="btn btn-primary" ui-sref="app.crearProducto"  title='Crear receta'>
+                                    <span > Generar lista </span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="panel panel-primary">
+            <div class="panel-body">
+               <div class="row">
+                <div class="col-lg-12">
+                    <img ng-if="isLoading" src="Images/Wait.gif"/>
+                    <div class="alert alert-warning" ng-if="showNoData">No hay datos disponibles</div>
+                    <table class="table table-striped m-b-none table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="max-width: 25px;">Seleccionar impresión</th>
+                                <th>Productos</th>
+                                <th>Estados</th>
+                                <th>Modificado</th>
+                                <th style="min-width: 50px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="impresion" value="impresion"><br></td>
+                                <td>producto</td>
+                                <td>estado</td>
+                                <td>Modificado</td>
+                                <td>
+                                <button type="button" ui-sref="app.simularporciones" >Simular</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination total-items="totalItems" ng-model="currentPage"
+                    class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8">
+                <button type="button"  style=" width: 180px;"> Actualizar receta</button>
+                <button type="button" style=" width: 180px; margin-left: 30px;">Exponer</button>
+                <button type="button" style=" width: 180px; margin-left: 30px;" >Salir</button>
+                </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
