@@ -171,7 +171,8 @@ angular.module('app')
                   files: [
                     'models/porciones.js',
                     'models/categoria.js',
-                    'controllers/porciones/index.js'
+                    'controllers/porciones/index.js',
+                    'controllers/porciones/simular.js'
                   ]
                 });
               }

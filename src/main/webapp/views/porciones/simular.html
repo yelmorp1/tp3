@@ -1,17 +1,15 @@
-<div class="container2" ng-controller='PorcionSimuladorCtrl'>
-    <div class="margenPanelRigth">
-        <fieldset>
-            <legend>producto: papa a la huancaina hola
-            </legend> 
-            <br />
-            
-
+<div class="modal-header">
+    Producto: {{nombreProducto}}
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-12">
             <fieldset class="fieldset-border">
                 <legend class="legend-border">Insumos</legend>
-                
+
                 <div class="row">
                     <div class="col-lg-12">
-                        <div id="gridSolicitud" class="col-lg-9 ">
+                        <div id="gridSolicitud" class="col-lg-12">
                             <table class="table table-bordered table-condensed table-hover ">
                                 <thead>
                                     <tr>
@@ -24,81 +22,66 @@
                                 <tbody>
                                     <tr >
 
-                                        <td class="text-right">papas:</td>
-                                        <td class="text-right">{{ item.Cantidad }}</td>
-                                        <td class="text-center">{{ item.UnidadMedida }}</td>
-                                        <td class="text-right">{{ item.Costo }}</td>
+                                        <td class="text-right">{{nombreArticulo}}</td>
+                                        <td class="text-right">
+                                            <input type="number" name="costosimulado" ng-model="item.cantidad"  ng-change="cambiarPorcion(item.cantidad)"> 
+                                        </td>
+                                        <td class="text-center">{{itemArticulo.unidadMedida}}</td>
+                                        <td class="text-right">{{costoItemSimulado}}</td>
                                     </tr>
                                     <tr >
 
                                         <td class="text-right">Otros insumos:</td>
                                         <td class="text-right"> - </td>
                                         <td class="text-center"> - </td>
-                                        <td class="text-right">{{ item.Costo }}</td>
+                                        <td class="text-right">{{costoDiferencial}}</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            
-                        </div>
-                        <div class="form-group row col-md-3">
-                            <span class="input-group-btn" style="padding-left:5px;">
-                                <button class="btn btn-primary">
-                                    <span >
-                                        Simular
-                                    </span>
-                                </button>
-                            </span>
+
                         </div>
                     </div>
                 </div>
             </fieldset>
             <!--  -->
             <fieldset class="fieldset-border">
-
                 <br>
-               <div class="row" style=" margin-top: 25px;">
+                <div class="row" style=" margin-top: 25px;">
 
-                <div class="col-lg-4" style="padding-left: 120px;"> Costo Producto:</div>
-                <div class="col-lg-4"> 
-                    <input type="type" name="costoproducto"> <span>kg</span>
+                    <div class="col-lg-4" style="padding-left: 120px;"> Costo Producto:</div>
+                    <div class="col-lg-4"> 
+                        <input type="text" name="costoproducto" value="{{costoProducto}}"> <span> Soles</span>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4" style="padding-left: 120px;"> Costo simulado del producto:</div>
-                <div class="col-lg-4"> 
-                    <input type="type" name="costosimulado"> <span>kg</span>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4" style="padding-left: 120px;"> Costo simulado del producto:</div>
+                    <div class="col-lg-4"> 
+                        <input type="type" name="costosimulado" ng-model="costoItemSimuladoResultado" ng-disabled="true" ng-readonly="true"> <span> Soles</span>
+                    </div>
+
                 </div>
-
-            </div>
-        </br>
+                </br>
 
 
-        <span>importante</span>   
-        <div class="row"> 
-            <input type="type" name="advertencia"  value="Debe cambiar la porcion de papas para no exceder el costo"
-            style="min-width: 600px; text-align: center; margin-left: 150px;">
-        </div>
-    </fieldset>
-    </br>
-    <div class="row">
-        <div class="form-group row col-md-6"></div>
-        <div class="form-group row col-md-6">
-            <span class="input-group-btn" >
-                <button class="btn btn-primary" style="width: 180px;">
-                    <span >
-                        Grabar
-                    </span>
-                </button>
-            </span>
-            <span class="input-group-btn" style="padding-left:20px; ">
-                <button class="btn btn-primary" style="width: 180px;">
-                    <span >
-                        Salir
-                    </span>
-                </button>
-            </span>
+                <div class="row" ng-if="mensajeAdvertencia"> 
+                    <input type="type" name="advertencia"  value="{{mensaje}}"
+                           style="min-width: 600px; text-align: center; margin-left: 150px;">
+                </div>
+            </fieldset>
         </div>
     </div>
-</fieldset>
 </div>
+<div class="modal-footer">
+    <span class="input-group-btn">
+        <button class="btn btn-primary" ng-click="actualizar()">
+            <span>
+                Grabar
+            </span>
+        </button>
+        <button class="btn btn-primary" ng-click="cancel()">
+            <span>
+                Salir
+            </span>
+        </button></span>
 </div>

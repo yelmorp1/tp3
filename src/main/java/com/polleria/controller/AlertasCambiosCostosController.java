@@ -41,12 +41,12 @@ public class AlertasCambiosCostosController {
 
     public List<Integer> readAll() throws Exception {
         lista = new ArrayList<>();
-        try {
+            try {
             cn = conexionSql.getConnection();
             stm = cn.createStatement();
             rs = stm.executeQuery("select * from GRP.tb_alertasCambiosCostos;");
             while (rs.next()) {
-                cat = rs.getInt(1);
+                cat = rs.getInt(6);
                 lista.add(cat);
             }
             rs.close();
@@ -68,7 +68,7 @@ public class AlertasCambiosCostosController {
             ps = cn.prepareStatement(sql);
             ps.setString(1, String.valueOf(idArticulo));
             rs = ps.executeQuery();
-            while (rs.next()) {
+            if(rs.next()) {
                 articuloCambiado.setCodAlerta(rs.getInt(1));
                 articuloCambiado.setTipoVariacion(rs.getString(2));
                 articuloCambiado.setFechaAlerta(rs.getString(3));

@@ -1,4 +1,4 @@
-app.factory("ProductoFtry", function ($http, $location, $rootScope) {
+ app.factory("ProductoFtry", function ($http, $location, $rootScope) {
     return {
         get: function (id) {
             return $http({

@@ -63,19 +63,20 @@ public class articuloProductoController {
     public String update(articuloProducto artChange) throws Exception {
         listaProductoXArticulo = new ArrayList<>();
         String resultado = "bad";
-        try {
+        try { 
 
             cn = conexionSql.getConnection();
-            sql= "UPDATE GRP.tb_articuloProducto SET cantidad = ? WHERE codArticulo = ? AND codProducto = ?;";
+            sql= "UPDATE GRP.tb_articuloProducto SET cantidad = ? WHERE codArticulo = ? AND codProducto = ?";
             ps = cn.prepareStatement(sql);
             ps.setString(1, String.valueOf(artChange.getCantidad()));
             ps.setString(2, String.valueOf(artChange.getCodArticulo()));
             ps.setString(3, String.valueOf(artChange.getCodProducto()));
-            rs = ps.executeQuery();
+            ps.execute();
             resultado = "ok";
             
             rs.close();
         } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
             return resultado;
         } finally  {
             // cn.close();
